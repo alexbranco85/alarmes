@@ -3,9 +3,9 @@ include './includes/head.php';
 include './includes/conexao.php';
 
 $termo = $_POST['termo'];
-$termo_completo = "%$termo%";
+$termo_busca = '%' . $termo . '%';
 
-$sql = "SELECT alarmes.*, equipamentos.* FROM alarmes INNER JOIN equipamentos ON alarmes.equipamento_relacionado = equipamentos.id_equip WHERE descricao LIKE '$termo'";
+$sql = "SELECT alarmes.*, equipamentos.* FROM alarmes INNER JOIN equipamentos ON alarmes.equipamento_relacionado = equipamentos.id_equip WHERE descricao LIKE '$termo_busca'";
 $res = $conn->query($sql);
 
 $qtd = $res->num_rows;
